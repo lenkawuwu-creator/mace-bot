@@ -2,9 +2,9 @@ const mineflayer = require('mineflayer');
 
 const bot = mineflayer.createBot({
   host: process.env.SERVER_IP,       
-  port: parseInt(process.env.SERVER_PORT) || 25565,
+  port: 25565, // البورت الافتراضي تلقائياً
   username: process.env.BOT_NAME || 'MaceGuardBot',
-  auth: 'offline'
+  auth: 'offline' // يدعم السيرفرات المكركة (Cracked)
 });
 
 const targetX = 250;
@@ -13,7 +13,7 @@ const triggerRadius = 6;
 
 bot.on('spawn', () => {
   console.log('Bot joined the Anarchy server successfully!');
-
+  
   setInterval(() => {
     const playerFilter = (entity) => entity.type === 'player' && entity.username !== bot.username;
     const player = bot.nearestEntity(playerFilter);
